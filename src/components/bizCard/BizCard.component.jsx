@@ -1,3 +1,4 @@
+import "./BizCard.component.css";
 import logo from "../../assets/logo512.png";
 
 const BizCard = (props) => {
