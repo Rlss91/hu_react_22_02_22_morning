@@ -1,6 +1,10 @@
 import logo from "../../assets/logo512.png";
 
 const BizCard = (props) => {
+  const handleDeleteClick = () => {
+    console.log("BizCard clicked", props);
+    props.onDeleteCard(props.id);
+  };
   return (
     <div className="col">
       <div className="card h-100">
@@ -12,7 +16,11 @@ const BizCard = (props) => {
           <h6 className="card-subtitle mb-2">{props.address}</h6>
         </div>
         <div className="card-footer">
-          <button type="button" className="btn btn-danger">
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={handleDeleteClick}
+          >
             X
           </button>
         </div>
