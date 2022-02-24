@@ -24,7 +24,7 @@ const NavBar = () => {
           <ul className="navbar-nav">
             {linkArr.map((itemLink) => {
               return (
-                <li className="nav-item">
+                <li className="nav-item" key={itemLink}>
                   <a className="nav-link" href="#">
                     {itemLink}
                   </a>
