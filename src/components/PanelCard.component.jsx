@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BizCard from "./bizCard/BizCard.component";
 
 const originalCardArr = [
@@ -26,21 +26,38 @@ const originalCardArr = [
 ];
 
 const PanelCard = () => {
-  const [cardsArr, setCardsArr] = useState(originalCardArr);
+  const [cardsArr, setCardsArr] = useState([]);
+  const [loaded, setLoaded] = useState(false);
   //   let cardsArr = ;
+  useEffect(() => {
+    setTimeout(() => {
+      fetch("http://localhost:8181/api/cards/allCards")
+        .then((response) => response.json())
+        .then((dataFromServer) => {
+          console.log("dataFromServer", dataFromServer);
+          setCardsArr(dataFromServer);
+        });
+    }, 5000);
+  }, []);
+
+  useEffect(() => {
+    if (cardsArr.length > 0) {
+      setLoaded(true);
+    }
+  }, [cardsArr]);
 
   const handleDeleteCard = (id) => {
     //! cardsArr = cardsArr.filter((item) => item.id != id); //dont do this, react will not update the ui
     // console.log("new cardsArr", cardsArr);
-    let newCardsArr = cardsArr.filter((item) => item.id != id);
+    let newCardsArr = cardsArr.filter((item) => item._id !== id);
     setCardsArr(newCardsArr);
   };
 
   const renderCardsArr = (item) => {
     return (
       <BizCard
-        key={item.id}
-        id={item.id}
+        key={item._id}
+        id={item._id}
         name={item.name}
         desc={item.desc}
         phone={item.phone}
@@ -51,6 +68,7 @@ const PanelCard = () => {
   };
   return (
     <div className="row row-cols-1 row-cols-md-3 g-4">
+      {!loaded && <h1>Loading...</h1>}
       {cardsArr.map(renderCardsArr)}
     </div>
   );
