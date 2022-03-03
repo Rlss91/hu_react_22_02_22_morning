@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Joi from "joi-browser";
+
+import loginSchema from "../validation/login.validation";
 
 /*
   {
@@ -29,6 +32,16 @@ const LoginForm = () => {
   const handleOnSubmit = (event) => {
     //prevent the form to do refresh
     event.preventDefault();
+    const validatedValue = Joi.validate({ email, password }, loginSchema, {
+      abortEarly: false,
+    });
+    console.log("validatedValue", validatedValue);
+    const { error } = validatedValue;
+    if (error) {
+      //invalid email or password
+    } else {
+      //email and password is good
+    }
     if (email !== "" && password !== "") {
       // setLoggedIn(true);
       axios
