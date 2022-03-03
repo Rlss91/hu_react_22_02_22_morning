@@ -15,8 +15,8 @@ function App() {
       {/* <h1>{title}</h1> */}
       {/* <h2>h2</h2> */}
       {/* <UserRow></UserRow> */}
-      <LoginForm></LoginForm>
-      {/* <PanelCard></PanelCard> */}
+      {/* <LoginForm></LoginForm> */}
+      <PanelCard></PanelCard>
       {/* <UsersTable></UsersTable> */}
       {/* <UseEffect></UseEffect> */}
       {/* <TimeComponent></TimeComponent> */}

@@ -32,19 +32,33 @@ const LoginForm = () => {
     if (email !== "" && password !== "") {
       // setLoggedIn(true);
       axios
-        .post("http://localhost:8181/api/users/login", {
+        .post("/users/login", {
           email,
           password,
         })
         .then((res) => {
           console.log("res from server", res);
           console.log("token", res.data.token);
+          localStorage.setItem("tokenKey", res.data.token);
           setLoggedIn(true);
         })
         .catch((err) => {
           console.log("error from server", err);
+          if (err.response) {
+            console.log("err.response", err.response);
+            alert(err.response.data);
+          }
+          // if (err.request) {
+          //   console.log("err.request", err.request);
+          // }
+          // if (err.message) {
+          //   console.log("err.message", err.message);
+          // }
+          // console.log("err.config", err.config);
+          // localStorage.removeItem("tokenKey");
+          localStorage.clear();
           setLoggedIn(false);
-          alert(err);
+          // alert(err);
         });
     }
   };

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 import BizCard from "./bizCard/BizCard.component";
 
@@ -31,13 +32,11 @@ const PanelCard = () => {
   //   let cardsArr = ;
   useEffect(() => {
     setTimeout(() => {
-      fetch("http://localhost:8181/api/cards/allCards")
-        .then((response) => response.json())
-        .then((dataFromServer) => {
-          console.log("dataFromServer", dataFromServer);
-          setCardsArr(dataFromServer);
-        });
-    }, 5000);
+      axios.get("/cards/allCards").then((dataFromServer) => {
+        console.log("dataFromServer", dataFromServer);
+        setCardsArr(dataFromServer.data);
+      });
+    }, 1000);
   }, []);
 
   useEffect(() => {
