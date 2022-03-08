@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Joi from "joi-browser";
 
 import loginSchema from "../validation/login.validation";
+import { authActions } from "../store/auth";
 
 /*
   {
@@ -17,6 +19,10 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
+
+  //for redux actions
+  const dispatch = useDispatch();
+  const loggedInRedux = useSelector((state) => state.auth.loggedIn);
 
   useEffect(() => {
     console.log("loggedIn", loggedIn);
@@ -52,6 +58,7 @@ const LoginForm = () => {
         .then((res) => {
           console.log("res from server", res);
           console.log("token", res.data.token);
+          dispatch(authActions.login());
           localStorage.setItem("tokenKey", res.data.token);
           setLoggedIn(true);
         })
@@ -95,7 +102,7 @@ const LoginForm = () => {
       <br />
       <button>login</button>
       {/* like ngIf */}
-      {loggedIn && (
+      {loggedInRedux && (
         <div>
           your email is: {email}
           <br />
