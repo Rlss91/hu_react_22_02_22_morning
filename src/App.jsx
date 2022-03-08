@@ -6,6 +6,7 @@ import UsersTable from "./components/usersTargil/UsersTable";
 import UseEffect from "./components/useEffect/UseEffect";
 import TimeComponent from "./components/Time.component";
 import TimeWrap from "./components/TimeWrap.component";
+import BizCardAxios from "./components/targilim/targil-axios/bizCardAxios/BizCardAxios";
 
 function App() {
   let title = "Hello world";
@@ -15,12 +16,13 @@ function App() {
       {/* <h1>{title}</h1> */}
       {/* <h2>h2</h2> */}
       {/* <UserRow></UserRow> */}
-      <LoginForm></LoginForm>
+      {/* <LoginForm></LoginForm> */}
       {/* <PanelCard></PanelCard> */}
       {/* <UsersTable></UsersTable> */}
       {/* <UseEffect></UseEffect> */}
       {/* <TimeComponent></TimeComponent> */}
       {/* <TimeWrap></TimeWrap> */}
+      <BizCardAxios></BizCardAxios>
     </div>
   );
 }
