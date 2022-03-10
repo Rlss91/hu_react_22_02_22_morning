@@ -1,7 +1,8 @@
 // import UserRow from "./components/UserRow";
 import NavBar from "./components/NavBar";
-import LoginForm from "./components/LoginForm.component";
-import LoginStatus from "./components/LoginStatus.component";
+import UpdateToken from "./components/UpdateToken.component";
+// import LoginForm from "./components/LoginForm.component";
+// import LoginStatus from "./components/LoginStatus.component";
 // import PanelCard from "./components/PanelCard.component";
 // import UsersTable from "./components/usersTargil/UsersTable";
 // import UseEffect from "./components/useEffect/UseEffect";
@@ -14,17 +15,18 @@ function App() {
   return (
     <div className="container">
       <NavBar />
-      <LoginStatus></LoginStatus>
+      {/* <LoginStatus></LoginStatus> */}
       {/* <h1>{title}</h1> */}
       {/* <h2>h2</h2> */}
       {/* <UserRow></UserRow> */}
-      <LoginForm></LoginForm>
+      {/* <LoginForm></LoginForm> */}
       {/* <PanelCard></PanelCard> */}
       {/* <UsersTable></UsersTable> */}
       {/* <UseEffect></UseEffect> */}
       {/* <TimeComponent></TimeComponent> */}
       {/* <TimeWrap></TimeWrap> */}
       {/* <BizCardAxios></BizCardAxios> */}
+      <UpdateToken></UpdateToken>
     </div>
   );
 }

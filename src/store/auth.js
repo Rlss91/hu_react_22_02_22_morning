@@ -5,6 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 */
 const initialAuthState = {
   loggedIn: false,
+  token: "",
 };
 
 /*
@@ -21,6 +22,10 @@ const authSlice = createSlice({
     },
     logout(state) {
       state.loggedIn = false;
+    },
+    updateToken(state, action) {
+      // console.log("action", action);
+      state.token = action.payload;
     },
   },
 });
